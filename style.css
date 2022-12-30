@@ -1,3 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: "Montserrat", sans-serif;
+}
+
 body {
-	background-color: #1e1e1e;
+	background-color: #565656;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+}
+
+.container {
+	width: 493px;
+	height: 666px;
+	background: url(img/search-card-background.png);
+	background-position: center;
+	border-radius: 30px;
+	margin: 0 auto;
+}
+
+.search-card {
+	display: flex;
+	justify-content: center;
+}
+
+.search-location {
+	margin-top: 25%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+}
+
+.search-location input {
+	display: flex;
+	width: 60%;
+	border-radius: 1000px;
+	padding: 0 20px;
+	border: 0;
+	height: 37px;
+	color: #c44689;
+}
+
+input:focus {
+	outline: none;
+}
+
+::placeholder {
+	color: #c44689;
+	opacity: 1;
+}
+
+.search-button {
+	width: 37px;
+	height: 37px;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	outline: none;
+	background: #432537;
+	border: none;
+	border-radius: 100px;
+}
+
+.search-button:hover {
+	cursor: pointer;
+	background-color: #321426;
+}
+
+.search-button img {
+	align-self: center;
 }
