@@ -5,18 +5,112 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>VaporWeather</title>
     </head>
-    <body>
-        <div class="container">
-            <div class="search-card">
-                <form class="search-location">
-                    <input type="text" name="city" placeholder='Search City...'
-                        autocomplete="off">
-                    <button class="search-button">
-                        <img src="img/magnifier-icon.svg"/>
+    <body class="preload">
+        <div class="wrapper">
+            <div class="container ">
+                <div class='main-card-background'>
+                    <img src="img/search-card-background.png"
+                        class="background-image" />
+                </div>
+                <div class="search-card">
+                    <form class="search-location">
+                        <input
+                            type="text"
+                            name="city"
+                            placeholder='Search City...'
+                            autocomplete="off">
+                        <button class="search-button">
+                            <img src="img/magnifier-icon.svg"/>
+                        </button>
+                    </form>
+                </div>
+                <div class="main-weather-card">
+                    <div class="top-main">
+                        <h2 class='current-day' data-current-day>Tuesday</h2>
+                        <p class="current-full-date" data-current-full-date>
+                            20 Jun 2022</p>
+                        <div class="local">
+                            <img src="img/navigation-icon.svg">
+                            <div class="local-text">
+                                <span data-local>Biarritz, FR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-main">
+                        <img src="img/sunny-icon.svg" class="current-icon"
+                            data-current-icon>
+                        <h1 class="current-temp"><span data-current-temp>29</span>&nbsp;&deg;C</h1>
+                        <p class="current-weather" data-current-weather>Sunny</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-container">
+                <div class="text-wrapper">
+                    <div class="additional-information-group">
+                        <span class="additional-label">Precipitation</span>
+                        <div>
+                            <span class="sub-info" data-precip>0</span>
+                            <span class="sub-info">mm</span>
+                        </div>
+                    </div>
+                    <div class="additional-information-group">
+                        <span class="additional-label">Humidity</span>
+                        <div>
+                            <span class="sub-info" data-humidity>42</span>
+                            <span class="sub-info">%</span>
+                        </div>
+                    </div>
+                    <div class="additional-information-group">
+                        <span class="additional-label">Wind</span>
+                        <div>
+                            <span class="sub-info" data-wind>3</span>
+                            <span class="sub-info">&nbsp;km/h</span>
+                        </div>
+                    </div>
+                    <div class="daily-card-group">
+                        <div class="daily-card">
+                            <img src="img/sunny-icon.svg" class="daily-icon"
+                                data-daily-icon>
+                            <p class="daily-day" data-daily-day>Tue</p>
+                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                        </div>
+                        <div class="daily-card">
+                            <img src="img/sunny-icon.svg" class="daily-icon"
+                                data-daily-icon>
+                            <p class="daily-day" data-daily-day>Tue</p>
+                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                        </div>
+                        <div class="daily-card">
+                            <img src="img/sunny-icon.svg" class="daily-icon"
+                                data-daily-icon>
+                            <p class="daily-day" data-daily-day>Tue</p>
+                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                        </div>
+                        <div class="daily-card">
+                            <img src="img/sunny-icon.svg" class="daily-icon"
+                                data-daily-icon>
+                            <p class="daily-day" data-daily-day>Tue</p>
+                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                        </div>
+                    </div>
+                    <button class="change-location-btn">
+                        <img src="img/navigation-icon.svg"/>
+                        <span class="change-location-label">
+                            Change Location
+                        </span>
                     </button>
-                </form>
+                </div>
             </div>
         </div>
+
+        <template id="daily-template">
+            <div class="daily-card">
+                <img src="" class="daily-icon"
+                    data-daily-icon>
+                <p class="daily-day" data-daily-day></p>
+                <p><span class="daily-temp" data-daily-temp></span><span>&nbsp;&deg;C</span></p>
+            </div>
+        </template>
         <script type="module" src="main.js"></script>
     </body>
 </html>
