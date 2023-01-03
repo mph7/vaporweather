@@ -7,7 +7,7 @@
     </head>
     <body class="preload">
         <div class="wrapper">
-            <div class="container ">
+            <div class="container">
                 <div class='main-card-background'>
                     <img src="img/search-card-background.png"
                         class="background-image" />
@@ -20,97 +20,115 @@
                             placeholder='Search City...'
                             autocomplete="off">
                         <button class="search-button">
-                            <img src="img/magnifier-icon.svg"/>
-                        </button>
-                    </form>
-                </div>
-                <div class="main-weather-card">
-                    <div class="top-main">
-                        <h2 class='current-day' data-current-day>Tuesday</h2>
-                        <p class="current-full-date" data-current-full-date>
-                            20 Jun 2022</p>
-                        <div class="local">
-                            <img src="img/navigation-icon.svg">
-                            <div class="local-text">
-                                <span data-local>Biarritz, FR</span>
+                            <svg width="27" height="27" viewBox="0 0 27 27"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.0893 5.9842C13.216 3.11086 8.55621
+                                    3.11086 5.68287 5.9842C2.80953 8.85754
+                                    2.80953 13.5173 5.68287 16.3907C8.22827
+                                    18.9361 12.176 19.2234 15.04 17.2589L18.6223
+                                    21.266C19.2313 21.95 20.29 21.9781 20.9365
+                                    21.3316L21.0302 21.2379C21.6767 20.5914
+                                    21.6486 19.5326 20.9647 18.9236L16.9576
+                                    15.3413C18.9252 12.4742 18.6347 8.5296
+                                    16.0893 5.9842ZM14.3029 14.6042C12.4165
+                                    16.4906 9.35574 16.4906 7.46934
+                                    14.6042C5.58293 12.7178 5.58293 9.65707
+                                    7.46934 7.77067C9.35574 5.88426 12.4165
+                                    5.88426 14.3029 7.77067C16.1924 9.6602
+                                    16.1893 12.7178 14.3029 14.6042Z"
+                                    fill="#D43FDA"/>
+                                </svg>
+
+                            </button>
+                        </form>
+                    </div>
+                    <div class="main-weather-card">
+                        <div class="top-main">
+                            <h2 class='current-day' data-current-day>Tuesday</h2>
+                            <p class="current-full-date" data-current-full-date>
+                                20 Jun 2022</p>
+                            <div class="local">
+                                <img src="img/navigation-icon.svg">
+                                <div class="local-text">
+                                    <span data-local>Biarritz, FR</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="bottom-main">
+                            <img src="img/sunny-icon.svg" class="current-icon"
+                                data-current-icon>
+                            <h1 class="current-temp"><span data-current-temp>29</span>&nbsp;&deg;C</h1>
+                            <p class="current-weather" data-current-weather>Sunny</p>
+                        </div>
                     </div>
-                    <div class="bottom-main">
-                        <img src="img/sunny-icon.svg" class="current-icon"
-                            data-current-icon>
-                        <h1 class="current-temp"><span data-current-temp>29</span>&nbsp;&deg;C</h1>
-                        <p class="current-weather" data-current-weather>Sunny</p>
+                </div>
+                <div class="sub-container">
+                    <div class="text-wrapper">
+                        <div class="additional-information-group">
+                            <span class="additional-label">Precipitation</span>
+                            <div>
+                                <span class="sub-info" data-precip>0</span>
+                                <span class="sub-info">mm</span>
+                            </div>
+                        </div>
+                        <div class="additional-information-group">
+                            <span class="additional-label">Humidity</span>
+                            <div>
+                                <span class="sub-info" data-humidity>42</span>
+                                <span class="sub-info">%</span>
+                            </div>
+                        </div>
+                        <div class="additional-information-group">
+                            <span class="additional-label">Wind</span>
+                            <div>
+                                <span class="sub-info" data-wind>3</span>
+                                <span class="sub-info">&nbsp;km/h</span>
+                            </div>
+                        </div>
+                        <div class="daily-card-group">
+                            <div class="daily-card">
+                                <img src="img/sunny-icon.svg" class="daily-icon"
+                                    data-daily-icon>
+                                <p class="daily-day" data-daily-day>Tue</p>
+                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                            </div>
+                            <div class="daily-card">
+                                <img src="img/sunny-icon.svg" class="daily-icon"
+                                    data-daily-icon>
+                                <p class="daily-day" data-daily-day>Tue</p>
+                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                            </div>
+                            <div class="daily-card">
+                                <img src="img/sunny-icon.svg" class="daily-icon"
+                                    data-daily-icon>
+                                <p class="daily-day" data-daily-day>Tue</p>
+                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                            </div>
+                            <div class="daily-card">
+                                <img src="img/sunny-icon.svg" class="daily-icon"
+                                    data-daily-icon>
+                                <p class="daily-day" data-daily-day>Tue</p>
+                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
+                            </div>
+                        </div>
+                        <button class="change-location-btn">
+                            <img src="img/navigation-icon.svg"/>
+                            <span class="change-location-label">
+                                Change Location
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="sub-container">
-                <div class="text-wrapper">
-                    <div class="additional-information-group">
-                        <span class="additional-label">Precipitation</span>
-                        <div>
-                            <span class="sub-info" data-precip>0</span>
-                            <span class="sub-info">mm</span>
-                        </div>
-                    </div>
-                    <div class="additional-information-group">
-                        <span class="additional-label">Humidity</span>
-                        <div>
-                            <span class="sub-info" data-humidity>42</span>
-                            <span class="sub-info">%</span>
-                        </div>
-                    </div>
-                    <div class="additional-information-group">
-                        <span class="additional-label">Wind</span>
-                        <div>
-                            <span class="sub-info" data-wind>3</span>
-                            <span class="sub-info">&nbsp;km/h</span>
-                        </div>
-                    </div>
-                    <div class="daily-card-group">
-                        <div class="daily-card">
-                            <img src="img/sunny-icon.svg" class="daily-icon"
-                                data-daily-icon>
-                            <p class="daily-day" data-daily-day>Tue</p>
-                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                        </div>
-                        <div class="daily-card">
-                            <img src="img/sunny-icon.svg" class="daily-icon"
-                                data-daily-icon>
-                            <p class="daily-day" data-daily-day>Tue</p>
-                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                        </div>
-                        <div class="daily-card">
-                            <img src="img/sunny-icon.svg" class="daily-icon"
-                                data-daily-icon>
-                            <p class="daily-day" data-daily-day>Tue</p>
-                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                        </div>
-                        <div class="daily-card">
-                            <img src="img/sunny-icon.svg" class="daily-icon"
-                                data-daily-icon>
-                            <p class="daily-day" data-daily-day>Tue</p>
-                            <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                        </div>
-                    </div>
-                    <button class="change-location-btn">
-                        <img src="img/navigation-icon.svg"/>
-                        <span class="change-location-label">
-                            Change Location
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
 
-        <template id="daily-template">
-            <div class="daily-card">
-                <img src="" class="daily-icon"
-                    data-daily-icon>
-                <p class="daily-day" data-daily-day></p>
-                <p><span class="daily-temp" data-daily-temp></span><span>&nbsp;&deg;C</span></p>
-            </div>
-        </template>
-        <script type="module" src="main.js"></script>
-    </body>
-</html>
+            <template id="daily-template">
+                <div class="daily-card">
+                    <img src="" class="daily-icon"
+                        data-daily-icon>
+                    <p class="daily-day" data-daily-day></p>
+                    <p><span class="daily-temp" data-daily-temp></span><span>&nbsp;&deg;C</span></p>
+                </div>
+            </template>
+            <script type="module" src="main.js"></script>
+        </body>
+    </html>

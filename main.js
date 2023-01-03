@@ -36,6 +36,7 @@ import "./style.css";
     function renderWeather({ current, daily }) {
         renderCurrentWeather(current);
         renderDailyWeather(daily);
+        changeColorscheme(current.weatherCode);
         changeDisplayMode();
     }
 
@@ -91,5 +92,64 @@ import "./style.css";
         } else {
             element.classList.add("alternative");
         }
+    }
+
+    const $root = document.querySelector(":root");
+    const $cardBackground = document.querySelector(".background-image");
+
+    const themes = {
+        sunny: {
+            "grad-color1": "#DDDD00",
+            "grad-color2": "#FFA500",
+            "main-color1": "#FFA500",
+            "main-color2": "#DDDD00",
+        },
+        cloudy: {
+            "grad-color1": "#432765",
+            "grad-color2": "#321560",
+            "main-color1": "#9C51B6",
+            "main-color2": "#DDA0DD",
+        },
+        rainy: {
+            "grad-color1": "#99FFFF",
+            "grad-color2": "#00BBBB",
+            "main-color1": "#00BBBB",
+            "main-color2": "#99FFFF",
+        },
+        foggy: {
+            "grad-color1": "#8F8F8F",
+            "grad-color2": "#D3D3D3",
+            "main-color1": "#BFBFBF",
+            "main-color2": "#F5F5F5",
+        },
+        snowy: {
+            "grad-color1": "#6666CC",
+            "grad-color2": "#6699CC",
+            "main-color1": "#9999CC",
+            "main-color2": "#CCCCFF",
+        },
+        thunderstorm: {
+            "grad-color1": "#00CC33",
+            "grad-color2": "#33CC00",
+            "main-color1": "#66CC99",
+            "main-color2": "#99CC66",
+        },
+    };
+
+    function setTheme(code) {
+        const theme = themes[code];
+        Object.entries(theme).forEach(([name, value]) => {
+            $root.style.setProperty(`--${name}`, value);
+        });
+        $cardBackground.src = getBackgroundUrl(code);
+    }
+
+    function changeColorscheme(code) {
+        const weatherCode = ICON_MAP.get(code);
+        setTheme(weatherCode);
+    }
+
+    function getBackgroundUrl(code) {
+        return `img/${code}-background.png`;
     }
 })();

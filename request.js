@@ -58,7 +58,7 @@ export async function getWeather(cityValue, timezone) {
             },
             weatherCode: data.current_weather.weathercode,
             wind: Math.round(data.current_weather.windspeed),
-            precip: Math.round(data.hourly.precipitation[data.hourly.time.indexOf(data.current_weather.time)]),
+            precip: Math.round(data.daily.precipitation_sum[0]),
             humidity: data.hourly.relativehumidity_2m[data.hourly.time.indexOf(data.current_weather.time)],
         };
     }
