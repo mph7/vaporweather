@@ -84,6 +84,11 @@ body {
     transition: opacity 0.5s;
 }
 
+.background-image.loading {
+    opacity: 70%;
+    transition: opacity 0.5s;
+}
+
 .container.alternative > .main-card-background > .background-image {
     opacity: 60%;
     transition: opacity 0.5s;
@@ -91,7 +96,8 @@ body {
 
 .search-card {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-content: center;
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s ease-out;
@@ -147,6 +153,68 @@ input:focus {
 
 .search-button svg path {
     fill: #fff;
+}
+
+.spinner {
+    width: 17.6px;
+    height: 17.6px;
+    animation: spinner-o824ag 1s infinite linear;
+    margin: 100px auto 0;
+    transition: visibility 0s 0.25s, opacity 0.25s ease-out;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.spinner div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: violet;
+    border-radius: 50%;
+    animation: spinner-vse6n7 1.25s infinite ease;
+}
+
+.spinner div:nth-child(1) {
+    --rotation: 90;
+}
+
+.spinner div:nth-child(2) {
+    --rotation: 180;
+}
+
+.spinner div:nth-child(3) {
+    --rotation: 270;
+}
+
+.spinner div:nth-child(4) {
+    --rotation: 360;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 100%;
+    transition: visibility 0.25s, opacity 0.25s;
+}
+
+@keyframes spinner-vse6n7 {
+    0% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
+    }
+    100% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes spinner-o824ag {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .container.alternative .search-card {

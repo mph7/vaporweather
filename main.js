@@ -16,21 +16,36 @@ import "./style.css";
         document.body.className = "";
     }, 1);
 
+    let isSearching = false;
     $searchButton.addEventListener("click", handleSearchButtonClick, false);
     $changeLocationButton.addEventListener("click", handleChangeLocationClick, false);
 
     function handleChangeLocationClick() {
+        isSearching = false;
         changeDisplayMode();
     }
 
     function handleSearchButtonClick(e) {
         e.preventDefault();
+        if (isSearching) return;
+        isSearching = true;
+        startLoading();
         getWeather($cityValue.value, Intl.DateTimeFormat().resolvedOptions().timeZone)
             .then(renderWeather)
             .catch((e) => {
-                console.log(e);
+                console.error(e);
                 alert("Error getting weather.");
             });
+    }
+
+    function startLoading() {
+        document.querySelector("[data-loading-spinner]").classList.add("visible");
+        document.querySelector(".background-image").classList.add("loading");
+    }
+
+    function stopLoading() {
+        document.querySelector("[data-loading-spinner]").classList.remove("visible");
+        document.querySelector(".background-image").classList.remove("loading");
     }
 
     function renderWeather({ current, daily }) {
@@ -38,6 +53,8 @@ import "./style.css";
         renderDailyWeather(daily);
         changeColorscheme(current.weatherCode);
         changeDisplayMode();
+        stopLoading();
+        document.querySelector(".search-location").reset();
     }
 
     const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-GB", {

@@ -65,7 +65,7 @@ export async function getWeather(cityValue, timezone) {
 
     function parseDailyWeather({ daily }) {
         let arr = [];
-        for (let index = 1; arr.length < 4; index++) {
+        for (let index = 1; index <= 4; index++) {
             arr.push({
                 dailyTemp: Math.round(daily.temperature_2m_max[index]),
                 timestamp: daily.time[index] * 1000,

@@ -10,7 +10,8 @@
             <div class="container">
                 <div class='main-card-background'>
                     <img src="img/search-card-background.png"
-                        class="background-image" />
+                        class="background-image" alt="main card
+                        background"/>
                 </div>
                 <div class="search-card">
                     <form class="search-location">
@@ -38,9 +39,15 @@
                                     16.1893 12.7178 14.3029 14.6042Z"
                                     fill="#D43FDA"/>
                                 </svg>
-
                             </button>
                         </form>
+                        <div class="spinner" data-loading-spinner>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
                     </div>
                     <div class="main-weather-card">
                         <div class="top-main">
@@ -48,7 +55,7 @@
                             <p class="current-full-date" data-current-full-date>
                                 20 Jun 2022</p>
                             <div class="local">
-                                <img src="img/navigation-icon.svg">
+                                <img src="img/navigation-icon.svg" alt="">
                                 <div class="local-text">
                                     <span data-local>Biarritz, FR</span>
                                 </div>
@@ -56,7 +63,7 @@
                         </div>
                         <div class="bottom-main">
                             <img src="img/sunny-icon.svg" class="current-icon"
-                                data-current-icon>
+                                data-current-icon alt="current weather icon">
                             <h1 class="current-temp"><span data-current-temp>29</span>&nbsp;&deg;C</h1>
                             <p class="current-weather" data-current-weather>Sunny</p>
                         </div>
@@ -86,33 +93,9 @@
                             </div>
                         </div>
                         <div class="daily-card-group">
-                            <div class="daily-card">
-                                <img src="img/sunny-icon.svg" class="daily-icon"
-                                    data-daily-icon>
-                                <p class="daily-day" data-daily-day>Tue</p>
-                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                            </div>
-                            <div class="daily-card">
-                                <img src="img/sunny-icon.svg" class="daily-icon"
-                                    data-daily-icon>
-                                <p class="daily-day" data-daily-day>Tue</p>
-                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                            </div>
-                            <div class="daily-card">
-                                <img src="img/sunny-icon.svg" class="daily-icon"
-                                    data-daily-icon>
-                                <p class="daily-day" data-daily-day>Tue</p>
-                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                            </div>
-                            <div class="daily-card">
-                                <img src="img/sunny-icon.svg" class="daily-icon"
-                                    data-daily-icon>
-                                <p class="daily-day" data-daily-day>Tue</p>
-                                <p><span class="daily-temp" data-daily-temp>30</span><span>&nbsp;&deg;C</span></p>
-                            </div>
                         </div>
                         <button class="change-location-btn">
-                            <img src="img/navigation-icon.svg"/>
+                            <img src="img/navigation-icon.svg" alt="" />
                             <span class="change-location-label">
                                 Change Location
                             </span>
@@ -124,7 +107,7 @@
             <template id="daily-template">
                 <div class="daily-card">
                     <img src="" class="daily-icon"
-                        data-daily-icon>
+                        data-daily-icon alt="weather icon for next days">
                     <p class="daily-day" data-daily-day></p>
                     <p><span class="daily-temp" data-daily-temp></span><span>&nbsp;&deg;C</span></p>
                 </div>
