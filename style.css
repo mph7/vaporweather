@@ -24,8 +24,6 @@ body.preload * {
 
 body {
     background-color: #565656;
-    display: flex;
-    align-items: center;
     height: 100vh;
 }
 

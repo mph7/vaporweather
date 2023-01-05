@@ -1,0 +1,75 @@
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    .wrapper {
+        flex-direction: column;
+        overflow: scroll;
+        height: auto;
+        justify-content: none;
+        align-items: none;
+    }
+
+    .container {
+        height: 80vh;
+        margin-top: 10px;
+        border-radius: 15px;
+        width: 95vw;
+        box-shadow: none;
+    }
+
+    .current-day {
+        font-size: 34px;
+    }
+
+    .current-full-date,
+    .local-text {
+        font-size: 18px;
+    }
+
+    /* <h2 class='current-day' data-current-day>Tuesday</h2>
+                            <p class="current-full-date" data-current-full-date>
+                                20 Jun 2022</p>
+                            <div class="local">
+                                <img src="img/navigation-icon.svg" alt="">
+                                <div class="local-text">
+                                    <span data-local>Biarritz, FR</span> */
+
+    .sub-container {
+        width: 91vw;
+        border-radius: 0 0 25px 25px;
+        left: 0;
+        height: 0;
+        padding: 0;
+        transition: height 0.5s;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-content: center;
+    }
+
+    .sub-container.alternative {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-content: center;
+        height: auto;
+        padding: 40px 50px 30px 50px;
+        top: -20px;
+        width: 91vw;
+    }
+    .text-wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    .additional-label,
+    .sub-info {
+        font-size: 20px;
+    }
+
+    .daily-card-group,
+    .change-location-btn {
+        margin-top: 20px;
+    }
+}

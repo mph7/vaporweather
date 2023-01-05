@@ -2,6 +2,7 @@ import { ICON_MAP } from "./iconsMap";
 import { getWeather } from "./request";
 
 import "./style.css";
+import "./responsive.css";
 
 (function () {
     "strict mode";
