@@ -1,12 +1,12 @@
 import axios from "axios";
+import { KEY } from "./config.js";
 
 export async function getWeather(cityValue, timezone) {
     "strict mode";
-    const key = "060b03b029934b76942358764b169456";
 
     let cityCoords;
     try {
-        cityCoords = await getCoordsFromCity(cityValue, key);
+        cityCoords = await getCoordsFromCity(cityValue, KEY);
     } catch (err) {
         throw new Error(`RADICAL ERROR: ${err}`);
     }
