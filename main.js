@@ -63,7 +63,7 @@ import "./responsive.css";
         month: "short",
         day: "numeric",
     });
-    const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long" });
+    const DAY_FORMATTER = new Intl.DateTimeFormat("en-gb", { weekday: "long" });
     const $currentIcon = document.querySelector("[data-current-icon]");
     function renderCurrentWeather(current) {
         $currentIcon.src = getIconUrl(current.weatherCode);
