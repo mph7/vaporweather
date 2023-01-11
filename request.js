@@ -1,6 +1,23 @@
 import axios from "axios";
 import { KEY } from "./config.js";
 
+export async function getAdressAutocomplete(value) {
+    return axios
+        .get("https://api.geoapify.com/v1/geocode/autocomplete", {
+            params: {
+                apiKey: KEY,
+                text: encodeURIComponent(value),
+                limit: 5,
+            },
+        })
+        .then(({ data: { features } }) => {
+            return features;
+        })
+        .catch((e) => {
+            throw new Error(`RADICAL ERROR: ${e}`);
+        });
+}
+
 export async function getWeather(cityValue, timezone) {
     "strict mode";
 
@@ -16,14 +33,14 @@ export async function getWeather(cityValue, timezone) {
             .get("https://api.geoapify.com/v1/geocode/search?format=json", {
                 params: { apiKey: key, text: city, limit: 1 },
             })
-            .then(({ data: { results } }) => {
+            .then(({ data }) => {
                 return {
-                    lat: results[0].lat,
-                    lon: results[0].lon,
-                    formatted: results[0].formatted,
-                    country: results[0].country,
-                    countryCode: results[0].country_code,
-                    city: results[0].city,
+                    lat: data.results[0].lat,
+                    lon: data.results[0].lon,
+                    formatted: data.results[0].formatted,
+                    country: data.results[0].country,
+                    state: data.results[0].state,
+                    city: data.results[0].city,
                 };
             });
     }
@@ -53,7 +70,7 @@ export async function getWeather(cityValue, timezone) {
             location: {
                 city: cityCoords.city,
                 country: cityCoords.country,
-                countryCode: cityCoords.countryCode,
+                state: cityCoords.state,
                 formatted: cityCoords.formatted,
             },
             weatherCode: data.current_weather.weathercode,

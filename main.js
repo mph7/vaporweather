@@ -1,5 +1,5 @@
 import { ICON_MAP } from "./iconsMap";
-import { getWeather } from "./request";
+import { getAdressAutocomplete, getWeather } from "./request";
 
 import "./style.css";
 import "./responsive.css";
@@ -11,7 +11,7 @@ import "./responsive.css";
     const $subContainer = document.querySelector(".sub-container");
     const $searchButton = document.querySelector(".search-button");
     const $changeLocationButton = document.querySelector(".change-location-btn");
-    const $cityValue = document.querySelector(".search-location input");
+    const $cityValue = document.querySelector(".search-input-container input");
 
     setTimeout(function () {
         document.body.className = "";
@@ -20,6 +20,8 @@ import "./responsive.css";
     let isSearching = false;
     $searchButton.addEventListener("click", handleSearchButtonClick, false);
     $changeLocationButton.addEventListener("click", handleChangeLocationClick, false);
+
+    $cityValue.addEventListener("input", handleDropDown, false);
 
     function handleChangeLocationClick() {
         isSearching = false;
@@ -47,6 +49,7 @@ import "./responsive.css";
     function stopLoading() {
         document.querySelector("[data-loading-spinner]").classList.remove("visible");
         document.querySelector(".background-image").classList.remove("loading");
+        removeClearButton();
     }
 
     function renderWeather({ current, daily }) {
@@ -65,27 +68,36 @@ import "./responsive.css";
     });
     const DAY_FORMATTER = new Intl.DateTimeFormat("en-gb", { weekday: "long" });
     const $currentIcon = document.querySelector("[data-current-icon]");
+
     function renderCurrentWeather(current) {
         $currentIcon.src = getIconUrl(current.weatherCode);
         setValue("current-day", DAY_FORMATTER.format(current.time));
         setValue("current-full-date", FULL_DATE_FORMATTER.format(current.time));
         setValue("current-temp", current.currentTemp);
         setValue("current-weather", ICON_MAP.get(current.weatherCode));
-        setValue("local", current.location.formatted);
+        setValue(
+            "local",
+            formatBetterLocation(current.location.city, current.location.state, current.location.country),
+        );
         setValue("precip", current.precip);
         setValue("humidity", current.humidity);
         setValue("wind", current.wind);
     }
 
-    const SHORT_DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+    const SHORT_DAY_FORMATTER = new Intl.DateTimeFormat(undefined, {
+        weekday: "short",
+    });
     const $dailyTemplate = document.getElementById("daily-template");
     const $dailyCardGroup = document.querySelector(".daily-card-group");
+
     function renderDailyWeather(daily) {
         $dailyCardGroup.innerHTML = "";
         daily.forEach((day) => {
             const element = $dailyTemplate.content.cloneNode(true);
             element.querySelector("[data-daily-icon]").src = getIconUrl(day.weatherCode);
-            setValue("daily-day", SHORT_DAY_FORMATTER.format(day.timestamp), { parent: element });
+            setValue("daily-day", SHORT_DAY_FORMATTER.format(day.timestamp), {
+                parent: element,
+            });
             setValue("daily-temp", day.dailyTemp, { parent: element });
             $dailyCardGroup.appendChild(element);
         });
@@ -170,4 +182,103 @@ import "./responsive.css";
     function getBackgroundUrl(code) {
         return `img/${code}-background.png`;
     }
+
+    const $clearButton = document.querySelector(".clear-button");
+    $clearButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        $cityValue.value = "";
+        removeClearButton();
+        closeDropDownList();
+    });
+
+    function removeClearButton() {
+        $clearButton.classList.remove("visible");
+    }
+
+    $cityValue.addEventListener(
+        "input",
+        (e) => {
+            if ($cityValue.value !== "") {
+                if (!$clearButton.classList.contains("visible")) {
+                    $clearButton.classList.add("visible");
+                }
+            } else {
+                $clearButton.classList.remove("visible");
+            }
+        },
+        false,
+    );
+
+    let _changeInterval = null;
+    const $autocompleteContainer = document.querySelector(".autocomplete-items-container");
+
+    let isSearchingDropDown = false;
+
+    function handleDropDown() {
+        closeDropDownList();
+        if ($cityValue.value === "") {
+            return;
+        }
+
+        if (isSearchingDropDown) {
+            return;
+        }
+
+        isSearchingDropDown = true;
+        clearInterval(_changeInterval);
+
+        _changeInterval = setInterval(function () {
+            clearInterval(_changeInterval);
+
+            let currentValue = $cityValue.value;
+
+            getAdressAutocomplete(currentValue).then(createDropDownMenu);
+        }, 500);
+    }
+
+    function createDropDownMenu(features) {
+        if (isSearching) {
+            return;
+        }
+        features.forEach((feature, index) => {
+            let autocompleteItem = document.createElement("DIV");
+            autocompleteItem.classList.add("autocomplete-items");
+            autocompleteItem.innerHTML = formatDropDownLocation(feature);
+            autocompleteItem.addEventListener(
+                "click",
+                (e) => {
+                    $cityValue.value = e.target.textContent;
+                    closeDropDownList();
+                },
+                false,
+            );
+            $autocompleteContainer.appendChild(autocompleteItem);
+        });
+        isSearchingDropDown = false;
+    }
+
+    function formatDropDownLocation({ properties: data }) {
+        let city = data.city;
+        let state = data.state;
+        let country = data.country;
+        return formatBetterLocation(city, state, country);
+    }
+
+    function formatBetterLocation(city, state, country) {
+        return (
+            (city === undefined ? "" : city + ", ") +
+            (state === undefined ? "" : state + ", ") +
+            (country === undefined ? "" : country)
+        );
+    }
+
+    function closeDropDownList() {
+        $autocompleteContainer.innerHTML = "";
+    }
+
+    document.addEventListener("click", (e) => {
+        if (e.target !== $cityValue) {
+            closeDropDownList();
+        }
+    });
 })();
